@@ -1,22 +1,35 @@
-/* Homepage embedding: keep long slide content readable at every viewport size. */
+/* Keep the slide canvas intact; only the surrounding controls reflow. */
+#presentation-app { height: 100vh; height: 100dvh; }
 .stage-outer { min-height: 0; padding: 12px; }
-.slide-panel { overflow-y: auto; overscroll-behavior: contain; }
-.slide-body { flex-shrink: 0; min-height: min-content; }
+.stage-viewport { flex: none; max-width: none; border: 0; outline: 1px solid var(--border-subtle); }
+.slides-track { width: 1440px; height: 810px; flex: none; transform-origin: top left; }
+.slide-panel { overflow: hidden; }
 .showcase-header, .showcase-footer { flex-shrink: 0; }
 button:focus-visible, a:focus-visible { outline: 2px solid #c4b5fd; outline-offset: 4px; }
-@media (max-width: 760px) {
+@media (max-width: 1024px) {
   .showcase-header { padding: 0 12px; gap: 8px; }
   .brand-badge, .header-center-info, .theme-picker-group, .timer-indicator { display: none; }
-  .showcase-footer { height: auto; min-height: 100px; padding: 12px; flex-wrap: wrap; gap: 12px; }
+  .header-actions { gap: 6px; }
+  .btn-icon { width: 44px; height: 44px; }
+  .showcase-footer { height: auto; min-height: 100px; padding: 10px 12px; flex-wrap: wrap; gap: 10px; }
   .dots-track-wrap { order: 3; flex-basis: 100%; max-width: none; margin: 0; }
-  .slide-panel { padding: 22px 18px; }
-  .title-main-h1 { font-size: 2.5rem; }
-  .title-footer-row { flex-wrap: wrap; }
-  .flow-walkthrough-layout, .features-grid, .security-grid, .future-grid { grid-template-columns: 1fr; }
-  .flow-walkthrough-layout { display: flex; flex-direction: column; }
-  .flow-walkthrough-layout > * { min-width: 0; flex-shrink: 0; }
-  .slide-headline { font-size: 1.5rem; }
-  .slide-subline { font-size: .9rem; }
+  .btn-nav, .mode-pill-toggle { min-height: 44px; }
+  .stage-outer { padding: 8px; }
+  .stage-viewport { border-radius: 6px; }
+}
+@media (max-width: 380px) {
+  .brand-name { font-size: 1rem; }
+  .brand-wrapper { gap: 6px; }
+  .header-actions { gap: 4px; }
+  .showcase-header { padding: 0 8px; }
+  .footer-nav-controls { gap: 6px; }
+  .btn-nav { padding-inline: 8px; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .showcase-header { height: 48px; }
+  .showcase-footer { min-height: 52px; height: 52px; padding: 4px 12px; flex-wrap: nowrap; }
+  .dots-track-wrap { order: 0; flex-basis: auto; margin: 0 12px; }
+  .stage-outer { padding: 6px; }
 }
 
 /* Fixed purple theme shared with the frontend. */
@@ -58,9 +71,3 @@ button:focus-visible, a:focus-visible { outline: 2px solid #c4b5fd; outline-offs
 .merkle-note { border-left: 3px solid var(--accent-primary); padding-left: 12px; }
 .merkle-note strong { color: var(--text-main); }
 .merkle-notation { font-size: .75rem; line-height: 1.5; color: var(--text-muted); }
-@media (max-width: 900px) {
-  .merkle-layout { grid-template-columns: 1fr; gap: 20px; }
-  .merkle-tree { padding: 16px; }
-  .merkle-level { gap: 8px; }
-  .merkle-node strong { font-size: .8rem; }
-}

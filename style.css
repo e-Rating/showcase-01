@@ -1699,33 +1699,4 @@ kbd {
   }
 }
 
-/* ──────────────────────────────────────────────────────────
-   Responsive Screen Adjustments
-   ────────────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .flow-walkthrough-layout {
-    grid-template-columns: 320px 1fr;
-  }
-  .slide-headline {
-    font-size: 1.75rem;
-  }
-  .title-main-h1 {
-    font-size: 2.8rem;
-  }
-  .problem-grid, .solution-pillars, .tech-stack-container {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-}
-
-@media (max-height: 750px) {
-  .slide-panel {
-    padding: 24px 36px;
-  }
-  .slide-top {
-    margin-bottom: 14px;
-  }
-  .slide-headline {
-    font-size: 1.6rem;
-  }
-}
+/* Slide geometry stays fixed; presentation-fit.js scales the 16:9 canvas. */

@@ -65,7 +65,7 @@ The showcase supports two primary operating modes: **Manual** (default) and **Au
 
 The deck uses the same fixed purple theme and responsive layout as the frontend presentation (`frontend/public/showcase/embedded.css`). Deep violet surfaces, lavender text, and purple controls are defined in **`showcase-01/embedded.css`**, loaded after the base stylesheet.
 
-Edit the semantic CSS variables in `embedded.css` to customize the palette. The color switcher is removed to keep the purple theme consistent. Long slides scroll within the stage, narrow screens stack content, and keyboard controls have visible focus outlines.
+Edit the semantic CSS variables in `embedded.css` to customize the palette. The color switcher is removed to keep the purple theme consistent. Slides use a fixed 1440 × 810 canvas, scaled proportionally to fit the available viewport without stacking or slide scrolling. Navigation controls remain touch-sized on mobile; rotation and fullscreen changes recalculate the fit. Keyboard controls have visible focus outlines.
 
 ---
 
@@ -135,6 +135,7 @@ showcase-01/
 ├── home.css                    # Responsive purple landing page styles
 ├── home.js                     # Compatibility for existing slide links
 ├── presentation.html           # Accessible presentation stage and controls
+├── presentation-fit.js         # Proportional 16:9 slide scaling
 ├── style.css                   # Base presentation styles and animations
 ├── embedded.css                # Frontend purple theme and responsive overrides
 ├── app.js                      # Presentation engine, timer, SVG diagram controller
