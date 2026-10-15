@@ -3,149 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>e-Rating — Project Showcase & Architecture Walkthrough</title>
-  <meta name="description" content="A privacy-preserving, verifiable module feedback system for university students using LSAG ring signatures and Merkle tree proofs.">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Explore e-Rating: a privacy-preserving, verifiable student feedback system. View the presentation, watch the demo, or visit the live project.">
+  <title>e-Rating — Project Showcase</title>
+  <link rel="stylesheet" href="home.css">
+  <script src="home.js" defer></script>
 </head>
 <body>
-  <div id="presentation-app">
-    <!-- Subtle Background Grid Pattern -->
-    <div class="bg-grid-overlay" aria-hidden="true"></div>
-
-    <!-- ──────────────────────────────────────────────────────────
-         Top Navigation / Header Bar
-         ────────────────────────────────────────────────────────── -->
-    <header class="showcase-header" role="banner">
-      <div class="brand-wrapper">
-        <div class="logo-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </div>
-        <span class="brand-name">e-Rating</span>
-        <span class="brand-badge">LSAG &bull; ECIES &bull; Merkle</span>
-      </div>
-
-      <div class="header-center-info">
-        <span class="slide-title-mini" id="header-slide-title">1. Title</span>
-      </div>
-
-      <div class="header-actions">
-        <!-- Theme Accent Switcher -->
-        <div class="theme-picker-group" title="Select Accent Theme Color">
-          <button class="theme-color-dot active" data-color="#8b5cf6" style="background: #8b5cf6;" aria-label="Purple Accent Theme"></button>
-          <button class="theme-color-dot" data-color="#3b82f6" style="background: #3b82f6;" aria-label="Blue Accent Theme"></button>
-          <button class="theme-color-dot" data-color="#10b981" style="background: #10b981;" aria-label="Emerald Accent Theme"></button>
-          <button class="theme-color-dot" data-color="#f59e0b" style="background: #f59e0b;" aria-label="Amber Accent Theme"></button>
-        </div>
-
-        <!-- Timer Ring Countdown -->
-        <div class="timer-indicator" id="timer-indicator-box" title="Auto-play countdown timer (Pauses on Hover or Space)">
-          <svg class="timer-ring-svg" viewBox="0 0 24 24">
-            <circle class="timer-ring-bg" cx="12" cy="12" r="9" />
-            <circle class="timer-ring-fill" id="timer-ring-fill" cx="12" cy="12" r="9" />
-          </svg>
-          <span class="timer-status-text" id="timer-status-text">Manual</span>
-        </div>
-
-        <!-- Play / Pause Button -->
-        <button class="btn-icon" id="btn-play-pause" aria-label="Toggle Play/Pause (Space)" title="Toggle Play/Pause (Space)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="5 3 19 12 5 21 5 3"/>
-          </svg>
-        </button>
-
-        <!-- Fullscreen Button -->
-        <button class="btn-icon" id="btn-fullscreen" aria-label="Toggle Fullscreen (F)" title="Toggle Fullscreen (F)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-          </svg>
-        </button>
-
-        <!-- Shortcuts / Help Button -->
-        <button class="btn-icon" id="btn-help" aria-label="Keyboard Shortcuts (?)" title="Keyboard Shortcuts (?)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <line x1="12" y1="17" x2="12.01" y2="17"/>
-          </svg>
-        </button>
-      </div>
+  <div class="home-shell">
+    <header class="home-header">
+      <a class="brand" href="index.html" aria-label="e-Rating home">
+        <span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m8 12 3 3 5-6"/></svg></span>
+        e-Rating
+      </a>
+      <span class="header-label">PROJECT SHOWCASE</span>
     </header>
-
-    <!-- ──────────────────────────────────────────────────────────
-         Main Stage Viewport (16:9 Scaled Container)
-         ────────────────────────────────────────────────────────── -->
-    <main class="stage-outer" role="main">
-      <div class="stage-viewport" id="stage-viewport" aria-live="polite">
-        <div class="slides-track" id="slides-track">
-          <!-- Slide panels injected via JavaScript -->
+    <main id="main">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span aria-hidden="true"></span> PRIVATE BY DESIGN. VERIFIABLE BY ANYONE.</p>
+        <h1 id="page-title">Honest feedback.<br><span>Without the fear.</span></h1>
+        <p class="intro-copy">A privacy-preserving module feedback system that separates student identity from reviews. Explore the ideas, see the workflow, or experience the project.</p>
+        <div class="tech-labels" aria-label="Core technologies"><span>Ring signatures</span><span>Encrypted feedback</span><span>Merkle proofs</span></div>
+      </section>
+      <section class="explore" aria-labelledby="explore-title">
+        <div class="section-heading"><h2 id="explore-title">Explore the project</h2><p>Choose where to begin</p></div>
+        <div class="option-grid">
+          <a class="option-card featured" href="presentation.html">
+            <div class="card-top"><span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 3h18v13H3zM12 16v5m-5 0 5-5 5 5M7 7h10M7 11h6"/></svg></span><span class="option-number">01 / EXPLORE</span></div>
+            <h3>Project Explanation<br> Presentation</h3>
+            <p>Follow the architecture, cryptography, and receipt verification in an interactive, 15-slide walkthrough.</p>
+            <span class="card-action">Open presentation <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="option-card" href="/dummy">
+            <div class="card-top"><span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/></svg></span><span class="option-number">02 / WATCH</span></div>
+            <h3>Project<br> Video Demo</h3>
+            <p>See the project in action, from submitting anonymous feedback to checking a verification receipt.</p>
+            <span class="card-action">Watch demo <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="option-card" href="/dummy">
+            <div class="card-top"><span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg></span><span class="option-number">03 / EXPERIENCE</span></div>
+            <h3>Project<br> Live URL</h3>
+            <p>Head to the live application and explore the student feedback experience for yourself.</p>
+            <span class="card-action">Visit live project <span aria-hidden="true">↗</span></span>
+          </a>
         </div>
-      </div>
+      </section>
     </main>
-
-    <!-- ──────────────────────────────────────────────────────────
-         Bottom Footer Controls Bar
-         ────────────────────────────────────────────────────────── -->
-    <footer class="showcase-footer" role="contentinfo">
-      <div class="footer-nav-controls">
-        <button class="btn-nav" id="btn-prev" aria-label="Previous Slide or Step (Left Arrow)" title="Previous (Left Arrow)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-          <span>Prev</span>
-        </button>
-
-        <span class="slide-counter" id="slide-counter" aria-label="Slide Counter">01 / 14</span>
-
-        <button class="btn-nav btn-nav-primary" id="btn-next" aria-label="Next Slide or Step (Right Arrow)" title="Next (Right Arrow)">
-          <span>Next</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-
-        <button class="btn-icon" id="btn-restart" aria-label="Restart Showcase (Home)" title="Restart Showcase (Home)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Slide Dots & Clickable Progress Bar -->
-      <div class="dots-track-wrap">
-        <div class="progress-bar-container" id="progress-bar-container" title="Click anywhere to jump" role="progressbar" aria-valuemin="1" aria-valuemax="14" aria-valuenow="1">
-          <div class="progress-bar-fill" id="progress-bar-fill"></div>
-        </div>
-        <div class="slide-dots-row" id="slide-dots-row" role="tablist">
-          <!-- 14 Slide dots injected dynamically -->
-        </div>
-      </div>
-
-      <!-- Playback Mode Toggles -->
-      <div class="footer-mode-toggles">
-        <button class="mode-pill-toggle" id="btn-autoplay-toggle" aria-label="Toggle Auto-play mode">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
-          </svg>
-          <span>Auto-Play</span>
-        </button>
-      </div>
-    </footer>
-
-    <!-- ──────────────────────────────────────────────────────────
-         Modal Overlay (Abstract & Shortcuts)
-         ────────────────────────────────────────────────────────── -->
-    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <div class="modal-card" id="modal-card">
-        <div class="modal-header">
-          <h3 id="modal-title">Information</h3>
-          <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
-        </div>
-        <div class="modal-body" id="modal-body">
-          <!-- Dynamic content -->
-        </div>
-      </div>
-    </div>
+    <footer class="home-footer"><span>e-Rating · Information Security &amp; Cryptography</span><span>Privacy. Integrity. Trust.</span></footer>
   </div>
-
-  <!-- Application Logic -->
-  <script src="app.js"></script>
 </body>
 </html>

@@ -552,6 +552,52 @@
     },
     {
       id: 11,
+      hash: 'merkle-verification',
+      pill: 'Verification · Under the hood',
+      title: 'From Your Receipt to the Merkle Root',
+      subtitle: 'Prove one feedback submission is included using only its leaf and a short path of sibling hashes.',
+      duration: 14,
+      fragmentsCount: 3,
+      diagramHighlight: { nodes: [], flows: [] },
+      render() {
+        return `
+          <div class="merkle-layout">
+            <figure class="merkle-tree">
+              <figcaption>FOUR-SUBMISSION EXAMPLE · VERIFY LEAF B</figcaption>
+              <div class="merkle-level merkle-root"><div class="merkle-node merkle-computed"><small>Compare with supplied root</small><strong>R = H(AB || CD)</strong></div></div>
+              <div class="merkle-branches" aria-hidden="true"><span>↗</span><span>↖</span></div>
+              <div class="merkle-level merkle-parents">
+                <div class="merkle-node merkle-computed"><small>Computed parent</small><strong>AB = H(A || B)</strong></div>
+                <div class="merkle-node merkle-sibling"><small>Proof sibling · right</small><strong>CD = H(C || D)</strong></div>
+              </div>
+              <div class="merkle-branches merkle-four" aria-hidden="true"><span>↗</span><span>↖</span><span>↗</span><span>↖</span></div>
+              <div class="merkle-level merkle-leaves">
+                <div class="merkle-node merkle-sibling"><strong>A</strong><small>Sibling · left</small></div>
+                <div class="merkle-node merkle-target"><strong>B</strong><small>Your leaf</small></div>
+                <div class="merkle-node"><strong>C</strong><small>Other leaf</small></div>
+                <div class="merkle-node"><strong>D</strong><small>Other leaf</small></div>
+              </div>
+              <p class="merkle-caption">Proof for B: <code>[A (left), CD (right)]</code><br>Only sibling hashes are needed, not the other feedback payloads.</p>
+            </figure>
+            <div class="merkle-explanation">
+              <section class="merkle-step fragment fragment-1" data-fragment="1">
+                <span class="merkle-step-number">01</span><div><h3>Recompute your leaf</h3><p>Hash the module ID, encrypted feedback, and canonical LSAG signature hash. Compare with the recorded leaf B.</p></div>
+              </section>
+              <section class="merkle-step fragment fragment-2" data-fragment="2">
+                <span class="merkle-step-number">02</span><div><h3>Climb the proof path</h3><p>Hash A on the left of B to get AB. Then hash CD on the right of AB. Left/right order matters.</p><code>H(H(A || B) || CD)</code></div>
+              </section>
+              <section class="merkle-step fragment fragment-3" data-fragment="3">
+                <span class="merkle-step-number">03</span><div><h3>Compare the roots</h3><p>Equal roots confirm inclusion against that root. A changed leaf or incorrect sibling path fails the comparison.</p><code>computed_root === expected_root</code></div>
+              </section>
+              <p class="merkle-note"><strong>What this proves:</strong> inclusion against the supplied root. LSAG validity is checked separately; detecting a rewritten history requires a trusted or independently retained root.</p>
+              <p class="merkle-notation">H = SHA-256 · || = concatenate hash strings · Proof size: O(log n)</p>
+            </div>
+          </div>
+        `;
+      }
+    },
+    {
+      id: 12,
       hash: 'security',
       pill: 'Threat Model',
       title: 'Security & Privacy Guarantees',
@@ -622,7 +668,7 @@
       }
     },
     {
-      id: 12,
+      id: 13,
       hash: 'techstack',
       pill: 'Engineering',
       title: 'Tech Stack & Codebase Highlights',
@@ -733,7 +779,7 @@
       }
     },
     {
-      id: 13,
+      id: 14,
       hash: 'demo',
       pill: 'App Showcase',
       title: 'Live Portal Demonstrations',
@@ -891,7 +937,7 @@
       }
     },
     {
-      id: 14,
+      id: 15,
       hash: 'conclusion',
       pill: 'Future Horizons',
       title: 'Future Work & Open Discussion',

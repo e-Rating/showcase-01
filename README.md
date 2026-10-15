@@ -1,6 +1,6 @@
 # 🎓 e-Rating — Project Showcase & Architecture Walkthrough
 
-A self-running, interactive project showcase presentation for **e-Rating**: a privacy-preserving, verifiable module feedback system for university students.
+A project landing page and self-running, interactive showcase presentation for **e-Rating**: a privacy-preserving, verifiable module feedback system for university students.
 
 Built entirely with standard **HTML5, CSS3, and modern Vanilla JavaScript**, this presentation runs completely offline in any web browser with zero dependencies, build steps, or external network requests.
 
@@ -11,20 +11,30 @@ Built entirely with standard **HTML5, CSS3, and modern Vanilla JavaScript**, thi
 ### Option 1: Direct File Open (Offline)
 Simply open the HTML file directly in any modern web browser (Google Chrome, Safari, Firefox, Microsoft Edge, Brave):
 ```bash
-open showcase/index.html    # macOS
-xdg-open showcase/index.html # Linux
-start showcase/index.html    # Windows
+open showcase-01/index.html    # macOS
+xdg-open showcase-01/index.html # Linux
+start showcase-01/index.html    # Windows
 ```
 
 ### Option 2: Local HTTP Server (Optional)
 If you prefer running through a local web server:
 ```bash
 # Using Python 3
-python3 -m http.server 8080 -d showcase
+python3 -m http.server 8080 -d showcase-01
 # Then visit http://localhost:8080 in your browser
 ```
 
 ---
+
+## Landing Page & Destinations
+
+Open `index.html` for the purple project landing page with three options:
+
+- **Project Explanation Presentation** → `presentation.html` (15-slide deck).
+- **Project Video Demo** → `/dummy` (placeholder supplied for this project).
+- **Project Live URL** → `/dummy` (placeholder supplied for this project).
+
+Replace the two `/dummy` links in `index.html` with the final destinations when ready. Root-relative links require an HTTP server; the landing page and presentation also work offline. The presentation header has a Home button. Previous `index.html#/slide/N` links redirect to `presentation.html#/slide/N`.
 
 ## 🎮 Playback & Navigation
 
@@ -42,7 +52,7 @@ The showcase supports two primary operating modes: **Manual** (default) and **Au
 | **Previous Step / Slide** | `←` / `PageUp` | `< Prev` Button |
 | **Play / Pause Auto-Play** | `Space` | Header Play/Pause Icon or Bottom Auto-Play Pill |
 | **Jump to Start** | `Home` | Restart Icon (`↺`) |
-| **Jump to End** | `End` | Click Slide 14 on Progress Bar |
+| **Jump to End** | `End` | Click Slide 15 on Progress Bar |
 | **Toggle Fullscreen** | `F` | Header Fullscreen Icon |
 | **Close Modal / Fullscreen** | `Esc` | Modal `×` or backdrop click |
 | **Shortcuts Cheat-Sheet** | `?` | Header Help Icon (`?`) |
@@ -53,37 +63,20 @@ The showcase supports two primary operating modes: **Manual** (default) and **Au
 
 ## 🎨 Theme Customization
 
-The presentation features a sleek modern dark theme with an easily customizable accent color.
+The deck uses the same fixed purple theme and responsive layout as the frontend presentation (`frontend/public/showcase/embedded.css`). Deep violet surfaces, lavender text, and purple controls are defined in **`showcase-01/embedded.css`**, loaded after the base stylesheet.
 
-### Quick Switcher:
-Click the four color dots in the top header bar to instantly preview different palettes:
-1. 🟣 **Purple / Violet** (`#8b5cf6` — Default theme)
-2. 🔵 **Ocean Blue** (`#3b82f6`)
-3. 🟢 **Emerald Green** (`#10b981`)
-4. 🟡 **Amber Gold** (`#f59e0b`)
-
-### Permanent CSS Variable Customization:
-In `showcase/style.css`, edit `:root`:
-```css
-:root {
-  --accent-primary: #8b5cf6;       /* Main brand accent */
-  --accent-hover: #7c3aed;         /* Button hover */
-  --accent-glow: rgba(139, 92, 246, 0.35);
-  --accent-subtle: rgba(139, 92, 246, 0.12);
-  --accent-border: rgba(139, 92, 246, 0.3);
-}
-```
+Edit the semantic CSS variables in `embedded.css` to customize the palette. The color switcher is removed to keep the purple theme consistent. Long slides scroll within the stage, narrow screens stack content, and keyboard controls have visible focus outlines.
 
 ---
 
 ## 🛠️ How to Edit Slides, Content & Timings
 
-All slide data, text, timings, fragments, and diagram states are configured inside a single data structure in **`showcase/app.js`**:
+All slide data, text, timings, fragments, and diagram states are configured inside a single data structure in **`showcase-01/app.js`**:
 
 ```javascript
 const SLIDES_CONFIG = [
   {
-    id: 1,                          // 1 to 14
+    id: 1,                          // 1 to 15
     hash: 'title',                  // URL hash slug
     pill: 'Project Showcase',       // Small badge label
     title: 'e-Rating',              // Main headline
@@ -126,19 +119,24 @@ Change `duration: 8` (seconds) on any slide in `SLIDES_CONFIG`. The top SVG circ
 8. **Protocol Step 3 — Encrypted Submission & Receipt**: Student hybrid-encrypts review, computes LSAG signature with nullifier $I = x \cdot \mathcal{H}(R)$, submits with zero cookies/tokens, receives Merkle receipt.
 9. **Protocol Step 4 — Decoupled Lecturer Decryption**: Lecturer logs into Moodle; Moodle fetches ciphertext and decrypts locally using module private key $d$ (Feedback Server never sees private key).
 10. **Protocol Step 5 — Independent Receipt Verification**: Student sends receipt token to Third-Party Verifier; Verifier audits signature, leaf hash, and Merkle path proof.
-11. **Security & Threat Model Matrix**: Resilience against compromised Moodle, compromised Feedback Server, rogue students, and untrusted verifiers.
-12. **Tech Stack & Implementation**: Python 3.12, Django 5, DRF, 3 decoupled SQLite databases, React 18, TypeScript, Vite 5, Tailwind CSS, custom `erating_crypto` engine.
-13. **Live App Walkthrough**: Interactive simulated browser showing the 3 actual web portals (:5173, :5174, :5175) with live clickable actions.
-14. **Future Horizons & Q&A**: zk-SNARKs for constant-size ring proofs, public blockchain root anchoring, differential privacy, and open discussion.
+11. **Merkle Verification Deep Dive**: Four-leaf example showing the target leaf, ordered proof siblings, root reconstruction, and the limits of inclusion verification. Three reveal steps explain the process.
+12. **Security & Threat Model Matrix**: Resilience against compromised Moodle, compromised Feedback Server, rogue students, and untrusted verifiers.
+13. **Tech Stack & Implementation**: Python 3.12, Django 5, DRF, 3 decoupled SQLite databases, React 18, TypeScript, Vite 5, Tailwind CSS, custom `erating_crypto` engine.
+14. **Live App Walkthrough**: Interactive simulated browser showing the 3 actual web portals (:5173, :5174, :5175) with live clickable actions.
+15. **Future Horizons & Q&A**: zk-SNARKs for constant-size ring proofs, public blockchain root anchoring, differential privacy, and open discussion.
 
 ---
 
 ## 📁 Showcase File Structure
 
 ```
-showcase/
-├── index.html                  # Accessible HTML5 presentation stage & controls
-├── style.css                   # Responsive 16:9 styles, dark theme, animations
+showcase-01/
+├── index.html                  # Project landing page with three destinations
+├── home.css                    # Responsive purple landing page styles
+├── home.js                     # Compatibility for existing slide links
+├── presentation.html           # Accessible presentation stage and controls
+├── style.css                   # Base presentation styles and animations
+├── embedded.css                # Frontend purple theme and responsive overrides
 ├── app.js                      # Presentation engine, timer, SVG diagram controller
 ├── README.md                   # Instructions, shortcuts, and architecture guide
 └── assets/
